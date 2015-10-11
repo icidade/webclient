@@ -1,0 +1,70 @@
+<html>
+	<header>
+	<script type="text/javascript">
+		function resetaForm(){
+			document.getElementById('termo1').value = "";
+			document.getElementById('termo2').value = "";
+			document.getElementById('op').value = "";
+			document.getElementById('visor').value = "";
+		}
+		function calcula(){
+			document.getElementById('termo2').value = document.getElementById('visor').value;
+			document.getElementById('visor').value = "";
+			op = document.getElementById('op').value;
+			var a = parseFloat(document.getElementById('termo1').value);
+			var b = parseFloat(document.getElementById('termo2').value);
+
+			if(op == '+'){
+				document.getElementById('visor').value = a+b;
+			}else if(op == '-'){
+				document.getElementById('visor').value = a-b;
+			}else if(op == '/'){
+				document.getElementById('visor').value = a/b;
+			}else if(op == '*'){
+				document.getElementById('visor').value = a*b;
+			}else{
+				document.getElementById('visor').value = '';
+			}
+			return false;
+		}
+		function addOp(text){
+			document.getElementById('termo1').value = document.getElementById('visor').value;
+			document.getElementById('visor').value = "";
+			document.getElementById('op').value = text;
+		}
+		function addText(text){
+			document.getElementById('visor').value += text;
+		}
+	</script>
+	</header>
+	<body onload="window.resizeTO(250,250);">
+		<form name="formCalculadora">
+			<input type="hidden" name="termo1" id="termo1" value=""/>
+			<input type="hidden" name="termo2" id="termo2" value=""/>
+			<input type= "hidden" name="op" id="op" />
+
+			<input type="text" name="visor" id="visor" value="" style="text-align: right;" size="14" /><br/>
+			<input type="button" name="C" value="C" onClick="resetaForm();" />
+			<input type="button" name="soma" value="+" onClick="addOp('+');" />
+			<input type="button" name="diminui" value="-" onClick="addOp('-');" />
+			<input type="button" name="divide" value="/" onClick="addOp('/');" />
+			<input type="button" name="multiplica" value="*" onClick="addOp('*');" />
+			<br/>
+			<input type="button" name="um" value="1" onClick="addText('1');" style="width: 40px;" />
+			<input type="button" name="dois" value="2" onClick="addText('2');" style="width: 40px;" />
+			<input type="button" name="tres" value="3" onClick="addText('3');" style="width: 40px;" />
+			<br/>
+			<input type="button" name="quatro" value="4" onClick="addText('4');" style="width: 40px;" />
+			<input type="button" name="cinco" value="5" onClick="addText('5');" style="width: 40px;" />
+			<input type="button" name="seis" value="6" onClick="addText('6');" style="width: 40px;" />
+			<br/>
+			<input type="button" name="sete" value="7" onClick="addText('7');" style="width: 40px;" />
+			<input type="button" name="oito" value="8" onClick="addText('8');" style="width: 40px;" />
+			<input type="button" name="nove" value="9" onClick="addText('9');" style="width: 40px;" />
+			<br/>
+			<input type="button" name="zero" value="0" onClick="addText('0');" style="width: 40px;" />
+			<input type="button" name="ponto" value="." onClick="addText('.');" style="width: 40px;" />
+			<input type="button" name="igual" value="=" onClick="calcula()" style="width: 40px;" />
+		</form>
+	</body>
+</html>
